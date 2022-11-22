@@ -42,22 +42,19 @@ let nextBtn = document.getElementById("nextBtn");
 let backBtn = document.getElementById("backBtn")
 // dichiarazione tasti
 
-
 startBtn.addEventListener("click",
 function(){
-
 // timer
 let timer = setInterval(function(){
+  
   attiva++
   if (attiva > ((imgArray.length)-1)) {
    attiva=0
   }
   
-
   txtActive.classList.remove("block");
   txtActive=document.getElementById("txt-" + attiva);
   txtActive.classList.add("block");
-
   bigActive.classList.remove("block");
   minActive.classList.remove("active-colonna");
   bigActive=document.getElementById("img-" + attiva);
@@ -67,28 +64,86 @@ let timer = setInterval(function(){
   bigActive.classList.add("animate__animated")
   bigActive.classList.add("animate__fadeIn")
   pointerActive=document.getElementById("nr-" + attiva);
-  primopointer=document.getElementById("ind-"+ attiva).checked=true
+  primopointer=document.getElementById("ind-"+ attiva).checked=true;
+
+
+  stopBtn.addEventListener("click", 
+function(){
+  clearInterval(timer);
+})
  }, 1000)
 
-
-
- stopBtn.addEventListener("click", 
-  function(){
-
-    clearInterval(timer);
-  })
+ backBtn.addEventListener("click", 
+ function(){
+  clearInterval(timer);
+  let timerBack = setInterval(function(){
+    attiva--
+    if (attiva < 0) {
+     attiva=imgArray.length - 1
+    }
+    txtActive.classList.remove("block");
+    txtActive=document.getElementById("txt-" + attiva);
+    txtActive.classList.add("block");
+   
+    bigActive.classList.remove("block");
+    minActive.classList.remove("active-colonna");
+    bigActive=document.getElementById("img-" + attiva);
+    minActive=document.getElementById("min-" + attiva);
+    bigActive.classList.add("block");
+    bigActive.classList.add("animate__animated");
+    bigActive.classList.add("animate__fadeIn");
+   //  Aggiungi animazione
+    minActive.classList.add("active-colonna");
+   //  Aggiungi filter alla colonna img piccole
+    primopointer=document.getElementById("ind-"+ attiva).checked=true
+   //  Muovi l'indicatore del radio
+   stopBtn.addEventListener("click", 
+function(){
+  clearInterval(timerBack);
 })
+   }, 1000)
 
+ })
+ nextBtn.addEventListener("click",
+ function(){
+ // timer
+ let timer = setInterval(function(){
+   
+   attiva++
+   if (attiva > ((imgArray.length)-1)) {
+    attiva=0
+   }
+   
+   txtActive.classList.remove("block");
+   txtActive=document.getElementById("txt-" + attiva);
+   txtActive.classList.add("block");
+   bigActive.classList.remove("block");
+   minActive.classList.remove("active-colonna");
+   bigActive=document.getElementById("img-" + attiva);
+   minActive=document.getElementById("min-" + attiva);
+   bigActive.classList.add("block");
+   minActive.classList.add("active-colonna");
+   bigActive.classList.add("animate__animated")
+   bigActive.classList.add("animate__fadeIn")
+   pointerActive=document.getElementById("nr-" + attiva);
+   primopointer=document.getElementById("ind-"+ attiva).checked=true;
+ 
+ 
+   stopBtn.addEventListener("click", 
+ function(){
+   clearInterval(timer);
+ })
+  }, 1000)
+ })
+
+})
 // dichiarazione tasti
-
-
 for (let i = 0 ; i < imgArray.length ; i++) {
   let objArr = imgArray[i];
     bigImg.innerHTML+=`<img src="${objArr.image}" alt="" class="none" id="img-${i}">`;
     minImg.innerHTML+=`<img src="${objArr.image}" alt="" class="" id="min-${i}">`;
     pointercontainer.innerHTML+=`<input type="radio" name="indicator" data-order="1" id="ind-${i}">`;
     bigImg.innerHTML+=`<span id="txt-${i}" class="testo none"><h2>${objArr.title}</h2>${objArr.text}</span> `;
-    // bigImg.innerHTML+=`<span id ="tit-${i}" class="title-img">proasdasdva</span>`
 }
 
 // Inseriamo le img grandi e piccola
@@ -153,7 +208,6 @@ function slideDown(){
   txtActive.classList.remove("block");
   txtActive=document.getElementById("txt-" + attiva);
   txtActive.classList.add("block");
-
   bigActive.classList.remove("block");
   minActive.classList.remove("active-colonna");
   bigActive=document.getElementById("img-" + attiva);
