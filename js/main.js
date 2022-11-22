@@ -28,29 +28,23 @@ const imgArray = [
   } 
 ];
 
-
-
-
 let bigImg=document.getElementById("output");
 let minImg=document.getElementById("colonna");
 let attiva= 0;
 let pointercontainer=document.getElementById("pointer-container");
-
+let onImgTxt = document.getElementById("testoImg");
 // Dichiaro i due container delle img e puntatore
 
 for (let i = 0 ; i < imgArray.length ; i++) {
   let objArr = imgArray[i];
-  
-  bigImg.innerHTML+=`<img src="${objArr.image}" alt="" class="none" id="img-${i}">`;
-  minImg.innerHTML+=`<img src="${objArr.image}" alt="" class="" id="min-${i}">`;
-  pointercontainer.innerHTML+=`<input type="radio" name="indicator" data-order="1" id="ind-${i}">`;
-  onImgTxt.innerHTML += `<span class="testo1">asdsssssssssssssssss</span>`;
-  
-  
-  
+    bigImg.innerHTML+=`<img src="${objArr.image}" alt="" class="none" id="img-${i}">`;
+    minImg.innerHTML+=`<img src="${objArr.image}" alt="" class="" id="min-${i}">`;
+    pointercontainer.innerHTML+=`<input type="radio" name="indicator" data-order="1" id="ind-${i}">`;
+    bigImg.innerHTML+=`<span id="txt-${i}" class="testo none">${objArr.text}</span> `;
 }
-// Inseriamo le img grandi e piccola
 
+// Inseriamo le img grandi e piccola
+let txtActive = document.querySelector(".testo")
 let bigActive=document.getElementById("img-" + attiva)
 let minActive=document.getElementById("min-" + attiva)
 let indicator=document.getElementById("ind-" + 0)
@@ -62,6 +56,7 @@ let indicatorQuattro=document.getElementById("ind-" + 4)
 
 bigActive.classList.add("block");
 minActive.classList.add("block");
+txtActive.classList.add("block")
 // Blocchiamo la prima img
 
 let arrowUp= document.getElementById("arrow-up");
@@ -84,13 +79,17 @@ function slideUp(){
  if (attiva < 0) {
   attiva=imgArray.length - 1
  }
+ txtActive.classList.remove("block");
+ txtActive=document.getElementById("txt-" + attiva);
+ txtActive.classList.add("block");
+
  bigActive.classList.remove("block");
  minActive.classList.remove("active-colonna");
  bigActive=document.getElementById("img-" + attiva);
  minActive=document.getElementById("min-" + attiva);
  bigActive.classList.add("block");
- bigActive.classList.add("animate__animated")
- bigActive.classList.add("animate__fadeIn")
+ bigActive.classList.add("animate__animated");
+ bigActive.classList.add("animate__fadeIn");
 //  Aggiungi animazione
  minActive.classList.add("active-colonna");
 //  Aggiungi filter alla colonna img piccole
@@ -102,6 +101,11 @@ function slideDown(){
   if (attiva > ((imgArray.length)-1)) {
    attiva=0
   }
+
+  txtActive.classList.remove("block");
+  txtActive=document.getElementById("txt-" + attiva);
+  txtActive.classList.add("block");
+
   bigActive.classList.remove("block");
   minActive.classList.remove("active-colonna");
   bigActive=document.getElementById("img-" + attiva);
@@ -109,7 +113,7 @@ function slideDown(){
   bigActive.classList.add("block");
   minActive.classList.add("active-colonna");
   bigActive.classList.add("animate__animated")
- bigActive.classList.add("animate__fadeIn")
+  bigActive.classList.add("animate__fadeIn")
   pointerActive=document.getElementById("nr-" + attiva);
   primopointer=document.getElementById("ind-"+ attiva).checked=true
  }
@@ -135,36 +139,57 @@ function slideDown(){
  function indicatorZero(event) {
     bigActive.classList.remove("block");
     bigActive=document.getElementById("img-" + 0);
+
+    txtActive.classList.remove("block");
+    txtActive=document.getElementById("txt-" + 0);
+    txtActive.classList.add("block");
+
     bigActive.classList.add("block");
-    bigActive.classList.add("animate__animated")
-    bigActive.classList.add("animate__fadeIn")
+    bigActive.classList.add("animate__animated");
+    bigActive.classList.add("animate__fadeIn");
 }
 indicatorUno.addEventListener("click", function(){
-  bigActive.classList.remove("block");
+    bigActive.classList.remove("block");
     bigActive=document.getElementById("img-" + 1);
     bigActive.classList.add("block");
-    bigActive.classList.add("animate__animated")
-  bigActive.classList.add("animate__fadeIn")
+    bigActive.classList.add("animate__animated");
+    bigActive.classList.add("animate__fadeIn");
+
+    txtActive.classList.remove("block");
+    txtActive=document.getElementById("txt-" + 1);
+    txtActive.classList.add("block");
 }); 
 indicatorDue.addEventListener("click", function(){
-  bigActive.classList.remove("block");
+    bigActive.classList.remove("block");
     bigActive=document.getElementById("img-" + 2);
     bigActive.classList.add("block");
-    bigActive.classList.add("animate__animated")
-    bigActive.classList.add("animate__fadeIn")
+    bigActive.classList.add("animate__animated");
+    bigActive.classList.add("animate__fadeIn");
+
+    txtActive.classList.remove("block");
+    txtActive=document.getElementById("txt-" + 2);
+    txtActive.classList.add("block");
 }); 
 indicatorTre.addEventListener("click", function(){
   bigActive.classList.remove("block");
     bigActive=document.getElementById("img-" + 3);
     bigActive.classList.add("block");
-    bigActive.classList.add("animate__animated")
-    bigActive.classList.add("animate__fadeIn")
+    bigActive.classList.add("animate__animated");
+    bigActive.classList.add("animate__fadeIn");
+
+    txtActive.classList.remove("block");
+    txtActive=document.getElementById("txt-" + 3);
+    txtActive.classList.add("block");
 }); 
 indicatorQuattro.addEventListener("click", function(){
-  bigActive.classList.remove("block");
+    bigActive.classList.remove("block");
     bigActive=document.getElementById("img-" + 4);
     bigActive.classList.add("block");
-    bigActive.classList.add("animate__animated")
-    bigActive.classList.add("animate__fadeIn")
+    bigActive.classList.add("animate__animated");
+    bigActive.classList.add("animate__fadeIn");
+
+    txtActive.classList.remove("block");
+    txtActive=document.getElementById("txt-" + 4);
+    txtActive.classList.add("block");
 }); 
 
