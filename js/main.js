@@ -73,6 +73,28 @@ indicatorDue.addEventListener("click", indicatorDue)
 indicatorTre.addEventListener("click", indicatorTre)
 indicatorQuattro.addEventListener("click", indicatorQuattro)
 
+// timer
+let timer = setInterval(function(){
+  attiva++
+  if (attiva > ((imgArray.length)-1)) {
+   attiva=0
+  }
+
+  txtActive.classList.remove("block");
+  txtActive=document.getElementById("txt-" + attiva);
+  txtActive.classList.add("block");
+
+  bigActive.classList.remove("block");
+  minActive.classList.remove("active-colonna");
+  bigActive=document.getElementById("img-" + attiva);
+  minActive=document.getElementById("min-" + attiva);
+  bigActive.classList.add("block");
+  minActive.classList.add("active-colonna");
+  bigActive.classList.add("animate__animated")
+  bigActive.classList.add("animate__fadeIn")
+  pointerActive=document.getElementById("nr-" + attiva);
+  primopointer=document.getElementById("ind-"+ attiva).checked=true
+ }, 3000)
 
 // dichiaro le funzioni al click
 
