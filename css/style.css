@@ -137,3 +137,9 @@ img{
   width: 90%;
   text-align: right;
 }
+.title-img{
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  font-weight: bold;
+}

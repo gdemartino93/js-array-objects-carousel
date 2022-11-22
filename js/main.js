@@ -35,12 +35,14 @@ let pointercontainer=document.getElementById("pointer-container");
 let onImgTxt = document.getElementById("testoImg");
 // Dichiaro i due container delle img e puntatore
 
+
 for (let i = 0 ; i < imgArray.length ; i++) {
   let objArr = imgArray[i];
     bigImg.innerHTML+=`<img src="${objArr.image}" alt="" class="none" id="img-${i}">`;
     minImg.innerHTML+=`<img src="${objArr.image}" alt="" class="" id="min-${i}">`;
     pointercontainer.innerHTML+=`<input type="radio" name="indicator" data-order="1" id="ind-${i}">`;
-    bigImg.innerHTML+=`<span id="txt-${i}" class="testo none">${objArr.text}</span> `;
+    bigImg.innerHTML+=`<span id="txt-${i}" class="testo none"><h2>${objArr.title}</h2>${objArr.text}</span> `;
+    // bigImg.innerHTML+=`<span id ="tit-${i}" class="title-img">proasdasdva</span>`
 }
 
 // Inseriamo le img grandi e piccola
@@ -175,7 +177,7 @@ indicatorTre.addEventListener("click", function(){
     bigActive=document.getElementById("img-" + 3);
     bigActive.classList.add("block");
     bigActive.classList.add("animate__animated");
-    bigActive.classList.add("animate__fadeIn");
+    bigActive.classList.add("animate__fadeIn")
 
     txtActive.classList.remove("block");
     txtActive=document.getElementById("txt-" + 3);
