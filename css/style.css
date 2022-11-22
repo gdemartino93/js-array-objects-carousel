@@ -72,17 +72,20 @@ img{
     height: 100vh;
   }
   header{
-    min-height: 20%;
+   
+    min-height: 10%;
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,67,254,1) 47%, rgba(0,212,255,1) 100%); 
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,251,254,1) 47%, rgba(0,212,255,1) 100%);
   }
   footer{
-    min-height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,67,254,1) 47%, rgba(0,212,255,1) 100%); 
+    height: 20%;
   }
   main{
-    min-height: 60%;
+    min-height: 70%;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,251,254,1) 47%, rgba(0,212,255,1) 100%);
  }
@@ -142,4 +145,45 @@ img{
   bottom: 70px;
   right: 20px;
   font-weight: bold;
+}
+
+i{
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+.fa-backward::before {
+  margin-right: 50px;
+  }
+  .fa-forward::before {
+  margin-left: 50px;
+  }
+.cmd-bar{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* tasti */
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #6ab07b;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }

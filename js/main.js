@@ -33,7 +33,53 @@ let minImg=document.getElementById("colonna");
 let attiva= 0;
 let pointercontainer=document.getElementById("pointer-container");
 let onImgTxt = document.getElementById("testoImg");
-// Dichiaro i due container delle img e puntatore
+let btnSpace = document.getElementById("btn-space");
+// Dichiarazione spazi e variabili attiva per cambio img
+
+let startBtn = document.getElementById("startBtn");
+let stopBtn = document.getElementById("stopBtn");
+let nextBtn = document.getElementById("nextBtn");
+let backBtn = document.getElementById("backBtn")
+// dichiarazione tasti
+
+
+startBtn.addEventListener("click",
+function(){
+
+// timer
+let timer = setInterval(function(){
+  attiva++
+  if (attiva > ((imgArray.length)-1)) {
+   attiva=0
+  }
+  
+
+  txtActive.classList.remove("block");
+  txtActive=document.getElementById("txt-" + attiva);
+  txtActive.classList.add("block");
+
+  bigActive.classList.remove("block");
+  minActive.classList.remove("active-colonna");
+  bigActive=document.getElementById("img-" + attiva);
+  minActive=document.getElementById("min-" + attiva);
+  bigActive.classList.add("block");
+  minActive.classList.add("active-colonna");
+  bigActive.classList.add("animate__animated")
+  bigActive.classList.add("animate__fadeIn")
+  pointerActive=document.getElementById("nr-" + attiva);
+  primopointer=document.getElementById("ind-"+ attiva).checked=true
+ }, 1000)
+
+
+
+ stopBtn.addEventListener("click", 
+  function(){
+
+    clearInterval(timer);
+  })
+})
+
+// dichiarazione tasti
 
 
 for (let i = 0 ; i < imgArray.length ; i++) {
@@ -73,28 +119,6 @@ indicatorDue.addEventListener("click", indicatorDue)
 indicatorTre.addEventListener("click", indicatorTre)
 indicatorQuattro.addEventListener("click", indicatorQuattro)
 
-// timer
-let timer = setInterval(function(){
-  attiva++
-  if (attiva > ((imgArray.length)-1)) {
-   attiva=0
-  }
-
-  txtActive.classList.remove("block");
-  txtActive=document.getElementById("txt-" + attiva);
-  txtActive.classList.add("block");
-
-  bigActive.classList.remove("block");
-  minActive.classList.remove("active-colonna");
-  bigActive=document.getElementById("img-" + attiva);
-  minActive=document.getElementById("min-" + attiva);
-  bigActive.classList.add("block");
-  minActive.classList.add("active-colonna");
-  bigActive.classList.add("animate__animated")
-  bigActive.classList.add("animate__fadeIn")
-  pointerActive=document.getElementById("nr-" + attiva);
-  primopointer=document.getElementById("ind-"+ attiva).checked=true
- }, 3000)
 
 // dichiaro le funzioni al click
 
